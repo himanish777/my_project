@@ -7,3 +7,27 @@ COPY target/FoodManagement.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
 
 CMD ["catalina.sh", "run"]
+
+# 1. Clone GitHub repository
+git clone <github-repository-url>
+
+# 2. Navigate into project
+cd FoodManagement
+
+# 3. Build Maven project and generate WAR
+mvn clean package
+
+# 4. Build Docker image
+docker build -t foodmanagement .
+
+# 5. View Docker images
+docker images
+
+# 6. Run Docker container
+docker run -d -p 8080:8080 --name foodcontainer foodmanagement
+
+# 7. Check running containers
+docker ps
+
+# 8. View container logs
+docker logs foodcontainer
