@@ -179,3 +179,4 @@ docker compose logs -f
 
 # Stop project
 docker compose down
+!
