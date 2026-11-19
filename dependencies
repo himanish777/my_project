@@ -1,0 +1,114 @@
+# DOCKER COMMANDS
+docker --version
+docker login
+docker pull nginx
+docker pull tomcat
+docker images
+docker ps
+docker ps -a
+docker build -t myapp .
+docker run -d -p 8081:8080 --name mycontainer myapp
+docker run -d -p 8081:80 --name mycontainer nginx
+docker stop mycontainer
+docker start mycontainer
+docker restart mycontainer
+docker rm mycontainer
+docker rmi myapp
+docker exec -it mycontainer bash
+docker logs mycontainer
+docker tag myapp username/myapp:v1
+docker push username/myapp:v1
+
+# DOCKER COMPOSE COMMANDS
+docker compose up
+docker compose up -d
+docker compose up --build
+docker compose up --build -d
+docker compose down
+docker compose down -v
+docker compose stop
+docker compose start
+docker compose restart
+docker compose ps
+docker compose logs
+docker compose logs -f
+docker compose build
+docker compose pull
+docker compose exec service_name bash
+
+# GITHUB + DOCKER COMPOSE
+git clone https://github.com/username/project.git
+cd project
+docker compose up --build -d
+docker compose ps
+docker compose logs -f
+docker compose down
+
+# MINIKUBE COMMANDS
+minikube start
+minikube status
+minikube stop
+minikube delete
+minikube dashboard
+minikube docker-env
+minikube image load myapp:v1
+minikube service myapp
+minikube service myapp --url
+
+# KUBERNETES BASIC COMMANDS
+kubectl version --client
+kubectl get nodes
+kubectl get pods
+kubectl get pods -o wide
+kubectl get deployments
+kubectl get services
+kubectl get svc
+kubectl get all
+kubectl describe pod pod_name
+kubectl describe deployment myapp
+kubectl logs pod_name
+kubectl exec -it pod_name -- bash
+
+# KUBERNETES DEPLOYMENT
+kubectl create deployment myapp --image=myapp:v1
+kubectl expose deployment myapp --type=NodePort --port=80
+kubectl expose deployment myapp --type=NodePort --port=80 --target-port=8080
+kubectl get deployments
+kubectl get pods
+kubectl get services
+kubectl scale deployment myapp --replicas=3
+kubectl set image deployment/myapp myapp=myapp:v2
+kubectl rollout status deployment/myapp
+kubectl rollout history deployment/myapp
+kubectl rollout undo deployment/myapp
+
+# KUBERNETES YAML COMMANDS
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl apply -f .
+kubectl get -f deployment.yaml
+kubectl delete -f deployment.yaml
+kubectl edit deployment myapp
+
+# KUBERNETES CLEANUP
+kubectl delete pod pod_name
+kubectl delete deployment myapp
+kubectl delete service myapp
+kubectl delete all --all
+
+# MINIKUBE + DOCKER DEPLOYMENT FLOW
+minikube start
+docker build -t foodapp:v1 .
+minikube image load foodapp:v1
+kubectl create deployment foodapp --image=foodapp:v1
+kubectl expose deployment foodapp --type=NodePort --port=8080 --target-port=8080
+kubectl get deployments
+kubectl get pods
+kubectl get services
+minikube service foodapp
+kubectl scale deployment foodapp --replicas=5
+kubectl get pods
+kubectl scale deployment foodapp --replicas=2
+kubectl delete service foodapp
+kubectl delete deployment foodapp
+minikube stop
