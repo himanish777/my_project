@@ -31,3 +31,151 @@ docker ps
 
 # 8. View container logs
 docker logs foodcontainer
+
+
+# DOCKER
+docker build -t myapp .
+docker images
+docker ps
+docker ps -a
+docker run -d -p 8081:8080 myapp
+docker stop container_name
+docker rm container_name
+docker login
+docker tag myapp username/myapp:v1
+docker push username/myapp:v1
+
+# DOCKER COMPOSE
+docker compose up -d
+docker compose up --build -d
+docker compose ps
+docker compose logs -f
+docker compose down
+
+# MINIKUBE
+minikube start
+minikube status
+minikube dashboard
+minikube stop
+minikube delete
+minikube image load myapp:v1
+minikube service myapp
+
+# KUBERNETES
+kubectl get nodes
+kubectl get pods
+kubectl get deployments
+kubectl get services
+kubectl get all
+kubectl create deployment myapp --image=myapp:v1
+kubectl expose deployment myapp --type=NodePort --port=80
+kubectl scale deployment myapp --replicas=3
+kubectl set image deployment/myapp myapp=myapp:v2
+kubectl rollout status deployment/myapp
+kubectl rollout undo deployment/myapp
+kubectl describe pod pod_name
+kubectl logs pod_name
+kubectl delete deployment myapp
+kubectl delete service myapp
+
+# YAML
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+kubectl apply -f .
+kubectl delete -f deployment.yaml
+
+# DOCKER COMPOSE COMMANDS
+
+# Check Docker Compose version
+docker compose version
+
+# Build and start all services
+docker compose up
+
+# Start in detached mode
+docker compose up -d
+
+# Build images and start containers
+docker compose up --build
+
+# Build and start in background
+docker compose up --build -d
+
+# Build images without starting containers
+docker compose build
+
+# Build a specific service
+docker compose build service_name
+
+# Start specific service
+docker compose up -d service_name
+
+# Stop containers
+docker compose stop
+
+# Start stopped containers
+docker compose start
+
+# Restart containers
+docker compose restart
+
+# Stop and remove containers and networks
+docker compose down
+
+# Remove containers, networks and volumes
+docker compose down -v
+
+# List running services
+docker compose ps
+
+# View logs
+docker compose logs
+
+# Follow logs continuously
+docker compose logs -f
+
+# View logs of a specific service
+docker compose logs service_name
+
+# Pull images
+docker compose pull
+
+# Execute command inside a running container
+docker compose exec service_name bash
+
+# Execute command without interactive terminal
+docker compose exec service_name command
+
+# Run a one-time command in a new container
+docker compose run service_name command
+
+# View configuration
+docker compose config
+
+# List services
+docker compose config --services
+
+# Remove stopped containers
+docker compose rm
+
+# Scale a service
+docker compose up -d --scale service_name=3
+
+# Check resource usage
+docker compose top
+
+# Clone project from GitHub
+git clone https://github.com/username/project.git
+cd project
+
+# Run project
+docker compose up --build -d
+
+# Verify containers
+docker compose ps
+
+# Check logs
+docker compose logs -f
+
+# Stop project
+docker compose down
